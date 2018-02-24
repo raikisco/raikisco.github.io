@@ -47,12 +47,23 @@ p{
   p{
     font-size: 1em;
   }
-};
+  .rbc-toolbar {
+    flex-direction:column;
+  }
+  .rbc-toolbar-label{
+    margin:5px 0px;
+  }
+}
 
+
+.rbc-events-container{
+  cursor:pointer;
+}
 
 .App {
   text-align: center;
 }
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -31,8 +31,8 @@ export default function ProfileSection(props) {
     <Section>
       <ProfilePic />
       <ProfileDesc>
-        <h2>Hi, I'm Raiko!</h2>
-        <h5>I am from Estonia!</h5>
+        <h2>Hi, I'm Raiko.</h2>
+        <h5>I am from Estonia.</h5>
         <br/>
         <h5>
           I have extensively travelled different countries and chose to make
@@ -43,7 +43,7 @@ export default function ProfileSection(props) {
         <h5>
           I enjoy connecting with people and helping them feel their best.
           Massages are like brain hugs - we all need one from time to time. I
-          would love to be part of your wellneess and self-care.
+          would love to be part of your wellness and self-care.
         </h5>
       </ProfileDesc>
     </Section>

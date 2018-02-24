@@ -41,7 +41,7 @@ export default function Hero(props) {
           On demand relaxation and healing. <br /> Delivered right to your home.
         </h3>
         <ButtonRow>
-          <Button> Book Now </Button>
+          <Button onClick={props.onToggleModal}> Book Now </Button>
           <Button> View Services </Button>
         </ButtonRow>
         <h4>

@@ -7,18 +7,36 @@ import "./app.css";
 import Hero from "./components/Hero";
 import Profile from "./components/Profile";
 import Qualifications from "./components/Qualifications";
-import Services from './components/Services';
-import Contact from './components/Contact';
+import Services from "./components/Services";
+import Contact from "./components/Contact";
+import BookingModal from "./components/BookingModal";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.state = {
+      modalOpen: false
+    };
+  }
+  handleToggleModal() {
+    console.log("ass");
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  }
   render() {
     return (
       <div className="App">
-        <Hero />
+        <BookingModal
+          modalOpen={this.state.modalOpen}
+          onToggleModal={this.handleToggleModal}
+        />
+        <Hero onToggleModal={this.handleToggleModal} />
         <Profile />
         <Qualifications />
-        <Services/>
-        <Contact/>
+        <Services onToggleModal={this.handleToggleModal} />
+        <Contact />
       </div>
     );
   }
