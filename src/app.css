@@ -1,3 +1,4 @@
+
 body {
   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
     'Lucida Grande', sans-serif;
@@ -58,6 +59,10 @@ p{
 
 .rbc-events-container{
   cursor:pointer;
+}
+
+.rbc-row-content{
+  z-index: 0 !important;
 }
 
 .App {

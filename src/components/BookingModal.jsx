@@ -44,10 +44,22 @@ const ModalBg = styled("div")`
   text-align: center;
 `;
 
+const ModalContent = styled("div")`
+  position: relative;
+  height: calc(100% - 50px);
+  overflow: scroll;
+`;
+const ModalHeader = styled("div")`
+  height: 40px;
+  position: relative;
+`;
+
 const CloseBtn = styled("div")`
   cursor: pointer;
-  display: inline;
-  float: right;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: translateX(-120%);
 `;
 
 const BoldTitle = styled("h4")`
@@ -55,66 +67,158 @@ const BoldTitle = styled("h4")`
 `;
 
 const BookButton = styled(Button)`
+  position: relative;
+  top: 100%;
+`;
+
+const CalendarWrapper = styled("div")`
+  height: 70%;
+  margin-top: 10px;
+  z-index: 0;
+  position: relative;
+`;
+const CalendarOverlay = styled("div")`
+  background-color: white;
+  opacity: 0.8;
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top:100%;
-  left:50%;
-  transform:translate(-50%,-120%)
-`
+  z-index: 5;
+  cursor: not-allowed;
+`;
+const InputLabels = styled("div")`
+  ${props => props.disabled && "opacity:0.2"};
+  margin-bottom: 10px;
+`;
+
 export default function BookingModal(props) {
+  console.log("events from props are", props.events);
   return (
     <Overlay visible={props.modalOpen}>
       <ModalBg visible={props.modalOpen}>
-        <div style={{ position: "relative", height:'100%' }}>
-          <div>
-            <h3 style={{ display: "inline", fontWeight: 600 }}>Book Now</h3>
-            <CloseBtn onClick={props.onToggleModal}>
-              <u>Close</u>
-            </CloseBtn>
-          </div>
+        <ModalHeader>
+          <h3 style={{ display: "inline", fontWeight: 600 }}>Book Now</h3>
+          <CloseBtn onClick={props.onToggleModal}>
+            <u>Close</u>
+          </CloseBtn>
+        </ModalHeader>
+        <ModalContent>
           <br />
           <div style={{ display: "flex" }}>
-            <div style={{ flex: 1 }}>
-              <BoldTitle>Step 1.</BoldTitle>
-              Select your service
+            <div style={{ flex: 1, zIndex: 6 }}>
+              <InputLabels>
+                <BoldTitle>Step 2.</BoldTitle>
+                Select your service
+              </InputLabels>
               <Select
-                // name="form-field-name"
-                // value={}
-                // onChange={this.handleChange}
+                value={props.bookingValues.service}
+                onChange={props.onBookingChange.bind(null, "service")}
+                clearable={false}
+                searchable={false}
                 options={[
-                  { value: "one", label: "One" },
-                  { value: "two", label: "Two" }
+                  { value: "swedish", label: "Swedish Massage" },
+                  { value: "deepTissue", label: "Deep Tissue Massage" },
+                  { value: "shiatsu", label: "Shiatsu Massage" },
+                  { value: "aromatherapy", label: "Aromatherapy Massage" },
+                  { value: "reflexology", label: "Reflexology Foot Massage" },
+                  {
+                    value: "integrated",
+                    label: "Integrated Whole Body Massage"
+                  }
                 ]}
               />
             </div>
             <div style={{ flex: 1 }}>
-              <BoldTitle>Step 2.</BoldTitle>
-              Select the duration
+              <InputLabels disabled={!props.bookingValues.service}>
+                <BoldTitle>Step 3.</BoldTitle>
+                Select the duration
+              </InputLabels>
               <Select
-                // name="form-field-name"
-                // value={}
-                // onChange={this.handleChange}
+                value={props.bookingValues.duration}
+                onChange={props.onBookingChange.bind(null, "duration")}
+                clearable={false}
+                searchable={false}
+                disabled={!props.bookingValues.service}
                 options={[
-                  { value: "one", label: "One" },
-                  { value: "two", label: "Two" }
+                  { value: "60", label: "60 Min" },
+                  { value: "90", label: "90 Min" }
                 ]}
               />
             </div>
           </div>
           <br />
           <div style={{ textAlign: "center" }}>
-            <BoldTitle>Step 3.</BoldTitle>
-            Select your desired date & time.
+            <InputLabels
+              disabled={
+                !props.bookingValues.service || !props.bookingValues.duration
+              }
+            >
+              <BoldTitle>Step 4.</BoldTitle>
+              Select your desired date & time.
+            </InputLabels>
           </div>
-          <div style={{ height: "50%", marginTop: "10px" }}>
+          <CalendarWrapper>
+            {(!props.bookingValues.service ||
+              !props.bookingValues.duration) && <CalendarOverlay />}
             <BigCalendar
-              events={[]}
-              startAccessor="startDate"
-              endAccessor="endDate"
+              events={props.events || []}
+              defaultDate={new Date()}
+              views={["month", "week", "day"]}
+              selectable={true}
+              getDrilldownView={(
+                targetDate,
+                currentViewName,
+                configuredViewNames
+              ) => {
+                let currentDate = new Date();
+                let tomorrow = currentDate.setDate(currentDate.getDate() + 1);
+                if (targetDate > tomorrow) return "day";
+                return null;
+              }}
+              min={new Date(2017, 10, 0, 10, 0, 0)}
+              max={new Date(2017, 10, 0, 22, 0, 0)}
+              dayPropGetter={date => {
+                let currentDate = new Date();
+                let tomorrow = currentDate.setDate(currentDate.getDate() + 1);
+                if (date < tomorrow) {
+                  return {
+                    className: null,
+                    style: { backgroundColor: "red", opacity: 0.4 }
+                  };
+                }
+              }}
+              onSelectSlot={
+                slotInfo => {
+                  if (
+                    Math.floor((slotInfo.end - slotInfo.start) / 1000 / 60) !==
+                      parseInt(props.bookingValues.duration.value)
+                  ) { //if all day event or length is wrong!
+                    return;
+                  }
+                  let events = props.events || [];
+                  events.push({
+                    start: slotInfo.start,
+                    end: slotInfo.end,
+                    title: props.bookingValues.service.label
+                  });
+                  props.onChangeEvents(events);
+                }
+                // console.log(
+                //   `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+                //     `\nend: ${slotInfo.end.toLocaleString()}` +
+                //     `\naction: ${slotInfo.action}`
+                // )
+              }
+              step={
+                (props.bookingValues.duration &&
+                  parseInt(props.bookingValues.duration.value)) ||
+                0
+              }
             />
-          </div>
-          <br/>
-          <BookButton color='grey'>Book Now!</BookButton>
-        </div>
+          </CalendarWrapper>
+          <br />
+          <BookButton color="grey">Book Now!</BookButton>
+        </ModalContent>
       </ModalBg>
     </Overlay>
   );
