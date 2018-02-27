@@ -153,6 +153,7 @@ export default function BookingModal(props) {
           />
           <br />
           <PayPalButton/>
+          {/* <BookButton color="grey">Book Now!</BookButton> */}
         </ModalContent>
       </ModalBg>
     </Overlay>
