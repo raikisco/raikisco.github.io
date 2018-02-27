@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 
 //Import Core
-import {Button} from 'core';
+import {Button} from './core';
 //Import assets
 import leaves from "assets/leaves.jpg";
 

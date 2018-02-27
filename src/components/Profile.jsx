@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 
 //Import core
-import { Section, SectionContent } from "core/";
+import { Section, SectionContent } from "./core";
 
 //Import assets
 import profile from "assets/raiko-profile.jpg";

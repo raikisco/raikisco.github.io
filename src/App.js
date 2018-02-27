@@ -17,11 +17,17 @@ class App extends Component {
     this.handleToggleModal = this.handleToggleModal.bind(this);
     this.handleBookingValue = this.handleBookingValue.bind(this);
     this.handleChangeEvents = this.handleChangeEvents.bind(this);
+    this.handleCalendarError = this.handleCalendarError.bind(this);
     this.state = {
       modalOpen: false,
       bookingValues:{},
       events:[]
     };
+  }
+  handleCalendarError(error){
+    this.setState({
+      calendarError:error
+    })
   }
   handleToggleModal() {
     this.setState({
@@ -37,7 +43,8 @@ class App extends Component {
   }
   handleChangeEvents(events){
     this.setState({
-      events
+      events,
+      calendarError:null
     });
   }
   render() {
@@ -50,6 +57,8 @@ class App extends Component {
           onBookingChange={this.handleBookingValue}
           onChangeEvents={this.handleChangeEvents}
           events={this.state.events}
+          error={this.state.calendarError}
+          onCalendarError={this.handleCalendarError}
         />
         <Hero onToggleModal={this.handleToggleModal} />
         <Profile />

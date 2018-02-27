@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 
 //Import core
-import { Section, SectionContent, Button } from "core/";
+import { Section, SectionContent, Button } from "./core";
 
 //Import assets
 import swedish from "assets/services/swedish.jpg";
