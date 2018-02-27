@@ -24,6 +24,12 @@ const CalendarOverlay = styled("div")`
   cursor: not-allowed;
 `;
 
+//TODO:
+// fetch events from google calendar
+// Keep track of user created event and push to end of array
+// if user creates new event, replace last index of array
+// on successful payment, push new event to google calendar
+
 export default function Calendar(props) {
   return (
     <CalendarWrapper>
