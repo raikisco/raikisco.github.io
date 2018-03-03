@@ -1,8 +1,9 @@
+import React from "react";
 // Though this file is optional, there are SO MANY COOL THINGS you can do here.
 // Read the docs at https://github.com/nozzle/react-static/blob/master/README.md to learn more!
 export default {
   siteRoot:'https://saibotx.github.io/anata-react-static/',
-  Document: class CustomHtml extends Component {
+  Document: class CustomHtml extends React.Component {
   render() {
     const { Html, Head, Body, children, renderMeta } = this.props
     // const script1 = "document.createElement('picture')"
