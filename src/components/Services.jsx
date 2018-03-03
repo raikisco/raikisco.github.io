@@ -62,7 +62,7 @@ const BookingSection = styled("div")`
 
 export default function Services(props) {
   return (
-    <Section>
+    <Section id='services'>
       <Content>
         <h2>Services Offered</h2>
         <h5>

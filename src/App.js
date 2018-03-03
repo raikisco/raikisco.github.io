@@ -32,7 +32,8 @@ class App extends Component {
   handleScrollToServices() {
     if (this.state.client) {
       let scrollTop = parseInt(
-        ReactDOM.findDOMNode(this.services).getBoundingClientRect().top,
+        document.getElementById("services").getBoundingClientRect().top,
+        // ReactDOM.findDOMNode(this.services).getBoundingClientRect().top,
         10
       );
       scroll.scrollTo(scrollTop);
@@ -50,6 +51,7 @@ class App extends Component {
         <Profile />
         <Qualifications />
         <Services
+          id='services'
           onToggleModal={this.handleToggleModal}
           ref={c => (this.services = c)}
         />
