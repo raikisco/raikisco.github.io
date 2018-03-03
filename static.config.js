@@ -6,7 +6,7 @@ export default {
   Document: class CustomHtml extends React.Component {
     render() {
       const { Html, Head, Body, children, renderMeta } = this.props;
-      // const script1 = "document.createElement('picture')"
+      // const script1 = "window.child_process = require('child_process')";
       // const script2 =
       //   "window.lazySizesConfig = window.lazySizesConfig || {}; window.lazySizesConfig.loadMode = 1"
       return (
@@ -17,17 +17,11 @@ export default {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
-            <title>My Title</title>
+            <title>Anata Massage</title>
             {renderMeta.styleTags}
             {/* <script dangerouslySetInnerHTML={{ __html: script1 }} /> */}
             {/* <script dangerouslySetInnerHTML={{ __html: script2 }} /> */}
-            <script
-              async
-              defer
-              src="https://apis.google.com/js/api.js"
-              onload="this.onload=function(){};handleClientLoad()"
-              onreadystatechange="if (this.readyState === 'complete') this.onload()"
-            />
+            {/* <script async defer src="https://apis.google.com/js/api.js" /> */}
             <script src="https://www.paypalobjects.com/api/checkout.js" />
           </Head>
           <Body>{children}</Body>

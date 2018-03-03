@@ -4,6 +4,7 @@ import BigCalendar from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Select from "react-select-plus";
 import "react-select-plus/dist/react-select-plus.css";
+// import google from 'googleapis';
 
 //Import core
 import { Section, SectionContent, Button } from "components/core";
@@ -14,6 +15,10 @@ import ContactInfoForm from "./Components/ContactInfoForm";
 import PayPalButton from "./Components/PayPalButton";
 import { doFetch, doPush } from "./utils";
 import serviceData from "./services.json";
+
+
+//Import privateKey for anatamassagecalendar
+let privatekey = require("./calendarKey.json");
 
 const Overlay = styled("div")`
   position: fixed;
@@ -97,6 +102,72 @@ export default class BookingModal extends React.Component {
     };
   }
   componentDidMount() {
+    //connect to google calendar
+    // let jwtClient = new google.auth.JWT(
+    //   privatekey.client_email,
+    //   null,
+    //   privatekey.private_key,
+    //   [
+    //     "https://www.googleapis.com/auth/spreadsheets",
+    //     "https://www.googleapis.com/auth/drive",
+    //     "https://www.googleapis.com/auth/calendar"
+    //   ]
+    // );
+    // //authenticate request
+    // jwtClient.authorize(function(err, tokens) {
+    //   if (err) {
+    //     console.log(err);
+    //     return;
+    //   } else {
+    //     console.log("Successfully connected!");
+    //   }
+    // });
+    //
+    // let calendar = google.calendar('v3');
+    //
+    // var resource = {
+    //   summary: "Appointment",
+    //   location: "Somewhere",
+    //   start: {
+    //     dateTime: "2018-03-16T10:00:00.000-07:00"
+    //   },
+    //   end: {
+    //     dateTime: "2018-03-16T10:25:00.000-07:00"
+    //   }
+    // };
+    //
+    // var request = calendar.events.insert({
+    //   calendarId: 'anatamassage@gmail.com',
+    //   resource: resource
+    // },(err,resp)=>{
+    //   if (err) {
+    //     console.log("error", err);
+    //   } else {
+    //     console.log("resp, resp", resp);
+    //   }
+    // });
+
+
+    // calendar.events.list({
+    //    auth: jwtClient,
+    //    calendarId: 'anatamassage@gmail.com'
+    // }, function (err, response) {
+    //    if (err) {
+    //        console.log('The API returned an error: ' + err);
+    //        return;
+    //    }
+    //    var events = response.items;
+    //    if (events.length == 0) {
+    //        console.log('No events found.');
+    //    } else {
+    //        console.log('Event from Google Calendar:');
+    //        for (let event of response.items) {
+    //            console.log('Event name: %s, Creator name: %s, Create date: %s', event.summary, event.creator.displayName, event.start.date);
+    //        }
+    //    }
+    // });
+
+    //fetch events
     doFetch().then(res => {
       if (res.items) {
         var modifiedItems = [];

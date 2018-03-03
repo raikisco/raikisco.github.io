@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "anatamassagecalendar",
+  "private_key_id": "2145c6c54bd1cb56c5095624940b05971d779783",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfxM++a9aD9s/f\nFlBBkxw1b2JXtF0ciF+31fIrHH8+v/8ilcbnBcNysD0Y4MqR35BwuMNICu5rMD3Y\nSAjWcFYvLeNvEedKhlEGS79/4HKIgYCzrQZU8AguSGcxTeYiXcBV7xCwFNy/eq7W\n0/KsG4+O+R/ZeIWi3we9iM19JRbKd36mk2EI/5XS1nITgtxH29u3ap88tA5gr9mM\nTpROw6LKv8HWbSHDFz/eKfrCiB27aZ8ZYEvplulVPW8XB4kEEAIyGaWHnJ23v90X\n+N79hCZmpaZtFr1FUJFStseerE0soUO7T/2XzN9ivUdNo1qxH0FrPmsJLvL63QgE\nW0IdvUB/AgMBAAECggEAQhB0ZMWbrPK0bwd/hTYK/o+Bx0lmDSPZDJ/TpP8CINTs\nb4Ume6X29SgqA20EZoBe7jWATnxyrPEESbgzq1RFVvnvJyDslnTm8ScGVx7czVRb\nfzCHQz0D7Pt0bD9Nb517qC0UJfNiem0E+gEnQgKdgJ3EDT1YaQo3XajBa8OX4n0R\npjQaXLhcmCXIi9DlCGwyZzsFVsGXt/TbfNdE00AcDvBsKQukQPZua/+lweIPM1nB\nv7o5szNrcDtTcf5I+W/mew04BEWIiU3kUlLehpmVqKnEf1K8yF8MB8EgTXhF26tU\nHS0C+YzI6bBtYRFz0bdCYlc1eFzZCFbGK+1n3VlERQKBgQDhvixuo1bo0jJsmJgj\nRFhk2foo6x18y8q1hH/7Mj7pcBa4cySE6Ulaidx3omG0ZDYBse7OEXBXf2mF85vU\n2TGKgHobuxQ0lTHqWg3U7ptXN/uaKzTEp9aP+YdNy0d3ep846fhiREs5RdDhQW4t\ntI3qNMf6oUTJqie72MgeC+mCOwKBgQC1LuVAv9u4/YA3ecd0etit/Kuzmyec8gxH\nYMhj2wobq32ruXLWI55pyVPUYX1aZZgR3hMoZ5Z20jKgRLo9LNST4hZi3CD7Haqg\niiYJACEJxKeIlr1qkIbc9PuwTvqt71MVIiqugwVOtTqWis3aliCX/z75ia3GSLkN\ncA2NhAMyjQKBgDfs0T0noiRTzsIwm6BBElUJ23u/o7KDGlkV1k75B7T1W+ueOvHi\niZWwibnptKLoIKkS18Kdd2N14UKaM4TrueZCJf4wvrS4MYGJhdu2sS1OZTqwcYY2\nvmU0wFx5e98Rtdh3vl055hjuPu1PNGiGTpIzOUfSJCSBzw4uioVHFjZ5AoGAFUgm\n4Y4nrvkH4HxLc2Eipn0xZe1pn8PGsXOq1h/adhmUr2EfHgwdBWwCjsXMxZt9W0vs\nkChqwhY6oByyi5ECf0RlQMN+lECN1EGl6hS7zLvuudqK8UN8s+OK1NDSHTApYCgd\nP1ZgfzhGY3x2ZaCQv4nZydHkOZA9PFjXHrJM9dkCgYEAsrxz57Qm64jdp8paqqcB\n5Bx5yu9sB+gJymB3RdO0cX/RSr5pbR3TlkRnXeljG8h0DJYsy9oDr6fEm3NAtiLc\nIQoQo5Mh7JsMcahpWSHYOB/YGU9KuyzJJav7VTU09KIIeIm78tDtGgnp/WLEdNsk\nybulTGV876yRjRfp7T9DWN4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "githubhost@anatamassagecalendar.iam.gserviceaccount.com",
+  "client_id": "115608027106076174360",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/githubhost%40anatamassagecalendar.iam.gserviceaccount.com"
+}

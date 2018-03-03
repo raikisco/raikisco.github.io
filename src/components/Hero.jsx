@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 
 //Import Core
-import {Button} from './core';
+import { Button } from "./core";
 //Import assets
 import leaves from "assets/leaves.jpg";
 
@@ -31,7 +31,6 @@ const ButtonRow = styled("div")`
   margin-bottom: 10px;
 `;
 
-
 export default function Hero(props) {
   return (
     <SectionBG>
@@ -41,8 +40,10 @@ export default function Hero(props) {
           On demand relaxation and healing. <br /> Delivered right to your home.
         </h3>
         <ButtonRow>
-          <Button onClick={props.onToggleModal}> Book Now </Button>
-          <Button> View Services </Button>
+          <a href="https://calendly.com/anatamassage">
+            <Button> Book Now </Button>{" "}
+          </a>
+          <Button onClick={props.onScrollToServices}> View Services </Button>
         </ButtonRow>
         <h4>
           Mobile massage treatments <br /> in Squamish and Whistler, BC.
