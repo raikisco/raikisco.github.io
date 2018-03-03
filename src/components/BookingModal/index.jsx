@@ -11,7 +11,9 @@ import { Section, SectionContent, Button } from "components/core";
 //Import components
 import Calendar from "./Components/Calendar";
 import ContactInfoForm from "./Components/ContactInfoForm";
-import PayPalButton from './Components/PayPalButton';
+import PayPalButton from "./Components/PayPalButton";
+import { doFetch, doPush } from "./utils";
+import serviceData from "./services.json";
 
 const Overlay = styled("div")`
   position: fixed;
@@ -82,80 +84,205 @@ const InputTitle = p => (
   </InputLabels>
 );
 
-export default function BookingModal(props) {
-  return (
-    <Overlay visible={props.modalOpen}>
-      <ModalBg visible={props.modalOpen}>
-        <ModalHeader>
-          <h3 style={{ display: "inline", fontWeight: 600 }}>Book Now</h3>
-          <CloseBtn onClick={props.onToggleModal}>
-            <u>Close</u>
-          </CloseBtn>
-        </ModalHeader>
-        <ModalContent>
-          <br />
-          <div style={{ textAlign: "center" }}>
-            <InputTitle title="Step 1." subTitle="How do we contact you?" />
-            <ContactInfoForm
-              values={props.bookingValues}
-              onChange={props.onBookingChange}
+export default class BookingModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCalendarError = this.handleCalendarError.bind(this);
+    this.handleBookingValue = this.handleBookingValue.bind(this);
+    this.handleChangeEvents = this.handleChangeEvents.bind(this);
+    this.handlePaymentComplete = this.handlePaymentComplete.bind(this);
+    this.state = {
+      bookingValues: {},
+      events: []
+    };
+  }
+  componentDidMount() {
+    doFetch().then(res => {
+      if (res.items) {
+        var modifiedItems = [];
+        var unavailableDates = [];
+        res.items.forEach(item => {
+          if (item.start.dateTime) {
+            //deal with start
+            let sdP = item.start.dateTime.split(/-|T|:/);
+            console.log("startDateParams", sdP);
+            let startDate = new Date(
+              sdP[0],
+              sdP[1] - 1,
+              sdP[2],
+              sdP[3],
+              sdP[4],
+              sdP[5]
+            );
+            let edP = item.end.dateTime.split(/-|T|:/);
+            let endDate = new Date(
+              edP[0],
+              edP[1] - 1,
+              edP[2],
+              edP[3],
+              edP[4],
+              edP[5]
+            );
+            modifiedItems.push({
+              ...item,
+              start: startDate,
+              end: endDate,
+              title: item.summary
+            });
+          } else {
+            let sdP = item.start.date.split(/-|T|:/);
+            let edP = item.end.date.split(/-|T|:/);
+            unavailableDates.push(new Date(sdP[0], sdP[1], sdP[2]));
+            // modifiedItems.push({
+            //   start: new Date(sdP[0], sdP[1] - 1, sdP[2], 1),
+            //   end: new Date(edP[0], edP[1] - 1, sdP[2], 23),
+            //   title: item.summary,
+            //   allDay: true
+            // });
+          }
+        });
+        this.setState({ events: modifiedItems, unavailableDates });
+      }
+    });
+  }
+  handleCalendarError(error) {
+    this.setState({
+      calendarError: error
+    });
+  }
+  handleBookingValue(id, value) {
+    let newBookingVal = {
+      ...this.state.bookingValues,
+      [id]: value
+    };
+    this.setState({ bookingValues: newBookingVal });
+  }
+  handleChangeEvents(newEvent) {
+    this.setState({
+      newEvent,
+      calendarError: null
+    });
+  }
+  handlePaymentComplete(){
+    doPush(this.state.newEvent, this.state.bookingValues)
+  }
+  render() {
+    let props = this.props;
+    let bookValues = this.state.bookingValues;
+    return (
+      <Overlay visible={props.modalOpen}>
+        <ModalBg visible={props.modalOpen}>
+          <ModalHeader>
+            <h3 style={{ display: "inline", fontWeight: 600 }}>Book Now</h3>
+            {/* <CloseBtn onClick={props.onToggleModal}> */}
+            <CloseBtn onClick={this.handlePaymentComplete}>
+              <u>Close</u>
+            </CloseBtn>
+          </ModalHeader>
+          <ModalContent>
+            <br />
+            <div style={{ textAlign: "center" }}>
+              <InputTitle title="Step 1." subTitle="How do we contact you?" />
+              <ContactInfoForm
+                values={this.state.bookingValues}
+                onChange={this.handleBookingValue}
+              />
+            </div>
+            <br />
+            <div style={{ display: "flex" }}>
+              <div style={{ flex: 3, zIndex: 6 }}>
+                <InputTitle title="Step 2." subTitle="Select your service" />
+                <Select
+                  value={this.state.bookingValues.service}
+                  onChange={this.handleBookingValue.bind(null, "service")}
+                  clearable={false}
+                  searchable={false}
+                  disabled={!this.state.bookingValues.phone}
+                  options={[
+                    { value: "swedish", label: "Swedish Massage" },
+                    { value: "deepTissue", label: "Deep Tissue Massage" },
+                    { value: "shiatsu", label: "Shiatsu Massage" },
+                    { value: "aromatherapy", label: "Aromatherapy Massage" },
+                    { value: "reflexology", label: "Reflexology Foot Massage" },
+                    {
+                      value: "integrated",
+                      label: "Integrated Whole Body Massage"
+                    }
+                  ]}
+                />
+              </div>
+              <div style={{ flex: 1 }} />
+              <div style={{ flex: 3 }}>
+                <InputTitle title="Step 3." subTitle="Select the duration" />
+                <Select
+                  value={this.state.bookingValues.duration}
+                  onChange={this.handleBookingValue.bind(null, "duration")}
+                  clearable={false}
+                  searchable={false}
+                  disabled={!this.state.bookingValues.service}
+                  options={[
+                    { value: "60", label: "60 Min" },
+                    { value: "90", label: "90 Min" }
+                  ]}
+                />
+              </div>
+            </div>
+            <br />
+            <div style={{ textAlign: "center" }}>
+              <InputTitle title="Step 4." subTitle="Select your date & time." />
+            </div>
+            <Calendar
+              bookingValues={this.state.bookingValues}
+              events={this.state.events || []}
+              newEvent={this.state.newEvent}
+              onChangeEvents={this.handleChangeEvents}
+              onError={this.handleCalendarError}
+              error={this.state.calendarError}
+              unavailableDates={this.state.unavailableDates}
             />
-          </div>
-          <br />
-          <div style={{ display: "flex" }}>
-            <div style={{ flex: 3, zIndex: 6 }}>
-              <InputTitle title="Step 2." subTitle="Select your service" />
-              <Select
-                value={props.bookingValues.service}
-                onChange={props.onBookingChange.bind(null, "service")}
-                clearable={false}
-                searchable={false}
-                disabled={!props.bookingValues.phone}
-                options={[
-                  { value: "swedish", label: "Swedish Massage" },
-                  { value: "deepTissue", label: "Deep Tissue Massage" },
-                  { value: "shiatsu", label: "Shiatsu Massage" },
-                  { value: "aromatherapy", label: "Aromatherapy Massage" },
-                  { value: "reflexology", label: "Reflexology Foot Massage" },
-                  {
-                    value: "integrated",
-                    label: "Integrated Whole Body Massage"
-                  }
-                ]}
+            <div style={{ opacity: this.state.newEvent ? 1 : 0.3 }}>
+              <br />
+              {bookValues.duration &&
+                bookValues.service && (
+                  <b>
+                    Total:{" $"}
+                    {
+                      serviceData[bookValues.service.value][
+                        bookValues.duration.value
+                      ]
+                    }
+                  </b>
+                )}
+              <br />
+              To Reserve your spot, click the paypal button.
+              <br />
+              Visa & Mastercard both are accepted!
+              <br />
+              <br />
+              <PayPalButton
+                onPaymentComplete={this.handlePaymentComplete}
+                price={
+                  bookValues.duration && bookValues.service
+                    ?
+                        serviceData[bookValues.service.value][
+                          bookValues.duration.value
+                        ]
+
+
+                    : undefined
+                }
+                desc={
+                  bookValues.duration && bookValues.service
+                    ? `${bookValues.service.label} - ${
+                        bookValues.duration.label
+                      }`
+                    : undefined
+                }
               />
             </div>
-            <div style={{flex:1}}/>
-            <div style={{ flex: 3 }}>
-              <InputTitle title="Step 3." subTitle="Select the duration" />
-              <Select
-                value={props.bookingValues.duration}
-                onChange={props.onBookingChange.bind(null, "duration")}
-                clearable={false}
-                searchable={false}
-                disabled={!props.bookingValues.service}
-                options={[
-                  { value: "60", label: "60 Min" },
-                  { value: "90", label: "90 Min" }
-                ]}
-              />
-            </div>
-          </div>
-          <br />
-          <div style={{ textAlign: "center" }}>
-            <InputTitle title="Step 4." subTitle="Select your date & time." />
-          </div>
-          <Calendar
-            bookingValues={props.bookingValues}
-            events={props.events || []}
-            onChangeEvents={props.onChangeEvents}
-            onError={props.onCalendarError}
-            error={props.error}
-          />
-          <br />
-          <PayPalButton/>
-          {/* <BookButton color="grey">Book Now!</BookButton> */}
-        </ModalContent>
-      </ModalBg>
-    </Overlay>
-  );
+          </ModalContent>
+        </ModalBg>
+      </Overlay>
+    );
+  }
 }
