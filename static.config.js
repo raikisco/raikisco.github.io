@@ -3,6 +3,12 @@ import React from "react";
 // Read the docs at https://github.com/nozzle/react-static/blob/master/README.md to learn more!
 export default {
   siteRoot: "https://saibotx.github.io/anata-react-static/",
+  paths: {
+    src: 'src', // The source directory. Must include an index.js entry file.
+    dist: 'docs', // The production output directory.
+    devDist: 'dist', // The development scratch directory.
+    public: 'public', // The public directory (files copied to dist during build)
+  },
   Document: class CustomHtml extends React.Component {
     render() {
       const { Html, Head, Body, children, renderMeta } = this.props;
