@@ -25,7 +25,7 @@ const Img = styled("img")`
   width: 180px;
   height: 180px;
   @media (max-width: 750px) {
-    display:none;
+    display: none;
   }
 `;
 const Service = styled("div")`
@@ -39,7 +39,7 @@ const Service = styled("div")`
   height: 180px;
   justify-content: space-between;
   @media (max-width: 750px) {
-    width:100%;
+    width: 100%;
     height: auto;
     text-align: center;
     margin-left: 0px;
@@ -89,12 +89,24 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
-              <Button small color="grey">
-                60 min -- $100
-              </Button>{" "}
-              <Button small color="grey">
-                90 min -- $130
-              </Button>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/swedish-massage-60-min"
+                }
+              >
+                <Button small color="grey">
+                  60 min -- $100
+                </Button>
+              </a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/swedish-massage-90-min"
+                }
+              >
+                <Button small color="grey">
+                  90 min -- $130
+                </Button>
+              </a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
@@ -113,12 +125,24 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
-              <Button small color="grey">
-                60 min -- $110
-              </Button>{" "}
-              <Button small color="grey">
-                90 min -- $140
-              </Button>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/deep-tissue-massage-60-min"
+                }
+              >
+                <Button small color="grey">
+                  60 min -- $110
+                </Button>
+              </a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/deep-tissue-massage-90-min"
+                }
+              >
+                <Button small color="grey">
+                  90 min -- $140
+                </Button>
+              </a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
@@ -137,12 +161,22 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/shiatsu-massage-60-min"
+                }
+              >
               <Button small color="grey">
                 60 min -- $100
-              </Button>{" "}
+              </Button></a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/shiatsu-massage-90-min"
+                }
+              >
               <Button small color="grey">
                 90 min -- $130
-              </Button>
+              </Button></a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
@@ -160,12 +194,23 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/aromatherapy-60-min"
+                }
+              >
               <Button small color="grey">
                 60 min -- $115
-              </Button>{" "}
+              </Button></a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/aromatherapy-90-min"
+                }
+              >
               <Button small color="grey">
                 90 min -- $150
               </Button>
+            </a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
@@ -185,12 +230,23 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/reflexology-foot-massage-60-min"
+                }
+              >
               <Button small color="grey">
                 60 min -- $100
-              </Button>{" "}
+              </Button></a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/reflexology-foot-massage-90-min"
+                }
+              >
               <Button small color="grey">
                 90 min -- $140
               </Button>
+            </a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
@@ -212,12 +268,23 @@ export default function Services(props) {
               <h4>
                 Book Now <i>(Taxes Included)</i>
               </h4>
+              <a
+                href={
+                  "https://calendly.com/anatamassage/integrated-whole-body-massage-60-min"
+                }
+              >
               <Button small color="grey">
                 60 min -- $130
-              </Button>{" "}
+              </Button></a>{" "}
+              <a
+                href={
+                  "https://calendly.com/anatamassage/integrated-whole-body-massage-90-min"
+                }
+              >
               <Button small color="grey">
                 90 min -- $170
               </Button>
+            </a>
             </BookingSection>
           </Service>
         </ServiceWrapper>
