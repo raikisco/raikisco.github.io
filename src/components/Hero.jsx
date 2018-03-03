@@ -35,7 +35,7 @@ export default function Hero(props) {
   return (
     <SectionBG>
       <Content>
-        <h1>Anata Massage</h1>
+        <h1>Anata Massagie</h1>
         <h3>
           On demand relaxation and healing. <br /> Delivered right to your home.
         </h3>

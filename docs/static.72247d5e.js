@@ -425,7 +425,7 @@ function Hero(props) {
       _react2.default.createElement(
         "h1",
         null,
-        "Anata Massage"
+        "Anata Massagie"
       ),
       _react2.default.createElement(
         "h3",
@@ -2224,4 +2224,4 @@ module.exports = {"type":"service_account","project_id":"anatamassagecalendar","
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.32bbac15.js.map
+//# sourceMappingURL=static.72247d5e.js.map
