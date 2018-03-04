@@ -5,7 +5,8 @@ import styled from "react-emotion";
 import { Section, SectionContent } from "./core";
 
 //Import assets
-import profile from "assets/raiko-profile.jpg";
+// import profile from "assets/raiko-profile.jpg";
+import profile from "assets/raiko-face.jpg";
 
 const ProfilePic = styled("img")`
   position: relative;

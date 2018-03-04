@@ -496,9 +496,9 @@ var _reactEmotion2 = _interopRequireDefault(_reactEmotion);
 
 var _core = __webpack_require__(2);
 
-var _raikoProfile = __webpack_require__(15);
+var _raikoFace = __webpack_require__(15);
 
-var _raikoProfile2 = _interopRequireDefault(_raikoProfile);
+var _raikoFace2 = _interopRequireDefault(_raikoFace);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -508,9 +508,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 //Import assets
+// import profile from "assets/raiko-profile.jpg";
 
 
-var ProfilePic = (0, _reactEmotion2.default)("img")(_templateObject, _raikoProfile2.default);
+var ProfilePic = (0, _reactEmotion2.default)("img")(_templateObject, _raikoFace2.default);
 
 var ProfileDesc = (0, _reactEmotion2.default)(_core.SectionContent)(_templateObject2);
 
@@ -552,7 +553,7 @@ function ProfileSection(props) {
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/raiko-profile.319c10e3.jpg";
+module.exports = __webpack_require__.p + "static/raiko-face.c1d8c3ba.jpg";
 
 /***/ }),
 /* 16 */
@@ -2224,4 +2225,4 @@ module.exports = {"type":"service_account","project_id":"anatamassagecalendar","
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.32bbac15.js.map
+//# sourceMappingURL=static.4bed0d3b.js.map
