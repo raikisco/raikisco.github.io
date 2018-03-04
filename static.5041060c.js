@@ -553,7 +553,7 @@ function ProfileSection(props) {
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/raiko-face.c1d8c3ba.jpg";
+module.exports = __webpack_require__.p + "static/raiko-face.f3a1b735.jpg";
 
 /***/ }),
 /* 16 */
@@ -2225,4 +2225,4 @@ module.exports = {"type":"service_account","project_id":"anatamassagecalendar","
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.dc8eedd7.js.map
+//# sourceMappingURL=static.5041060c.js.map
