@@ -866,7 +866,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $100"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -878,7 +878,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $130"
+                "90 min -- $100"
               )
             )
           )
@@ -926,7 +926,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $110"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -938,7 +938,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $140"
+                "90 min -- $100"
               )
             )
           )
@@ -986,7 +986,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $100"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -998,7 +998,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $130"
+                "90 min -- $100"
               )
             )
           )
@@ -1046,7 +1046,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $115"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -1058,7 +1058,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $150"
+                "90 min -- $100"
               )
             )
           )
@@ -1106,7 +1106,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $100"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -1118,7 +1118,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $140"
+                "90 min -- $100"
               )
             )
           )
@@ -1166,7 +1166,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "60 min -- $130"
+                "60 min -- $70"
               )
             ),
             " ",
@@ -1178,7 +1178,7 @@ function Services(props) {
               _react2.default.createElement(
                 _core.Button,
                 { small: true, color: "grey" },
-                "90 min -- $170"
+                "90 min -- $100"
               )
             )
           )
